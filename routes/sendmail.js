@@ -1,7 +1,8 @@
 var express = require('express');
 var nodemailer = require('nodemailer');
 var router = express.Router();
-// var sendmail=require('../mailconnection');
+
+ var db=require('../dbconnection');
 
 
 // Create the transporter with the required configuration for Gmail
@@ -17,22 +18,37 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-router.get('/',function(req,res){
+router.get('/:id',function(req,res){
+    var id=req.params.id;
+    console.log(id);
+    var sql="CALL updateEmailDetails(?)";
+    db.query(sql,[id],function(err,rows){
+        console.log(id);
+        if(err){
+            return res.json(err);
+        }
+        else{
+           return res.json(rows);
+        }
+    })
+
 var mailOptions = {
     from: '"Our Code World " <anusha.gadepalli@trianz.com>', // sender address (who sends)
-    to: 'anusha.gadepalli@trianz.com,niteshkumar.sharma@trianz.com', // list of receivers (who receives)
-    subject: 'Hello ', // Subject line
-    text: 'Hello world ', // plaintext body
-    html: '<b>Hello world </b><br> This is the first email sent with Nodemailer in Node.js' // html body
+    to: 'anusha.gadepalli@trianz.com', // list of receivers (who receives)
+   
+    subject: 'Invoice Info', // Subject line
+    text: ' ', // plaintext body
+    html: '<br> Invoice is generated for the project' // html body
 };
 
 // send mail with defined transport object
 transporter.sendMail(mailOptions, function(error, info){
     if(error){
-        return console.log(error);
+        return error;
     }
-
-    console.log('Message sent: ' + info.response);
+    return 'Message sent: ' + info.response;
 });
+
 })
+
 module.exports=router;
