@@ -24,45 +24,8 @@ var retrieveprojectforfm=require('./routes/retrieveprojectforfm');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var revenuegenerate=require('./routes/revenuegenerate');
-
-
 var app = express();
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
 app.use(bodyParser.json());
-// var transporter = nodemailer.createTransport({
-//   host: "smtp-mail.outlook.com", // hostname
-//   secureConnection: false, // TLS requires secureConnection to be false
-//   port: 587, // port for secure SMTP
-//   auth: {
-//       user: 'anusha.gadepalli@trianz.com',
-//       pass: 'lhndsydjpltyhcpd'
-//   }
-// });
-// app.get('/',function(req,res){
-//   console.log("Hello");
-//   res.sendFile(__dirname + '/views/index1.html');
-// })
-// app.get('/send',function(req,res){
-//   var mailOptions={
-//       to : req.query.to,
-//       subject : req.query.subject,
-//       text : req.query.text
-//   }
-//   console.log(mailOptions);
-//   transporter.sendMail(mailOptions, function(error, response){
-//    if(error){
-//           console.log(error);
-//       res.end("error");
-//    }else{
-//           console.log("Message sent: " + response.message);
-//       res.end("sent");
-//        }
-// });
-// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

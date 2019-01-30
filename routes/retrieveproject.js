@@ -14,7 +14,7 @@ router.get('/:id/:id1',function(req,res){
     var x=dateFormat(now,"yyyy-12-31");
     console.log(x);
     var y=dateFormat(now1,"yyyy-01-01");
-    var sql="CALL helloooo(?,?,?)";
+    var sql="CALL RetieveProjectDetails5(?,?,?)";
     db.query(sql,[id,x,y],function(err,rows){
         console.log(x);
         console.log(y);

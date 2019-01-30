@@ -9,5 +9,5 @@ var connection=mysql.createConnection({
 });
 
 
-// var connection = mysql.createConnection({multipleStatements: true});
+
 module.exports=connection;
